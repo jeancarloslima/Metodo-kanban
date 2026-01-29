@@ -3,9 +3,10 @@
 :root {
     /* Cores */
     --cor-texto: #F1FFE7;
-    --cor-fundo: #1A1B41;
-    --cor-primaria: #6290C3;
-    --cor-secundaria: #BAFF29;
+    --cor-fundo: #264653;
+    --cor-primaria: #f4a261;
+    --cor-secundaria: #e9c46a;
+    --cor-terciaria: #2a9d8f;
     /* Fontes */
     --fonte-primaria: "Poppins", sans-serif;
 }
@@ -26,11 +27,22 @@ header {
     text-align: center;
     font-size: 7rem;
     font-weight: 800;
+}
+
+#titulo-fazer {
     color: var(--cor-primaria);
 }
 
+#titulo-fazendo {
+    color: var(--cor-secundaria);
+}
+
+#titulo-feito{
+    color: var(--cor-terciaria);
+}
+
 main {
-    height: calc(100dvh - 176px);
+    height: calc(80dvh - 176px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +52,6 @@ main {
     display: flex;
     width: 80dvw;
     min-height: 500px;
-    padding: 2rem;
     background-color: var(--cor-texto);
     color: var(--cor-fundo);
     border-radius: 16px;
@@ -48,11 +59,41 @@ main {
 
 .colunas {
     width: 33%;
-    height: 100%;
+    padding: 2rem;
 }
 
 .titulo-coluna {
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+#coluna-1 {
+    background-color: var(--cor-primaria);
+    border-radius: 16px 0 0 16px;
+}
+
+#coluna-2 {
+    background-color: var(--cor-secundaria);
+}
+
+#coluna-3 {
+    background-color: var(--cor-terciaria);
+    border-radius: 0 16px 16px 0;
+}
+
+#btn-adicionar-card {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 2rem;
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+    cursor: pointer;
+    transition: .3s;
 }
