@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método Kanban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
+
 <body>
 
     <header>
-        <h1 id="titulo"><span id="titulo-fazer">Ka</span><span id="titulo-fazendo">nb</span><span id="titulo-feito">an</span></h1>
+        <h1 id="titulo"><span id="titulo-fazer">Ka</span><span id="titulo-fazendo">nb</span><span
+                id="titulo-feito">an</span></h1>
     </header>
-    
+
     <main>
         <div id="main-container">
             <div id="coluna-1" class="colunas">
                 <h2 class="titulo-coluna">A FAZER</h2>
                 <ul id="coluna-lista-1" class="coluna-lista">
-                    <li class="card">Fazer o protótipo do projeto</li>
-                    <li class="card">Fazer o protótipo do projeto do primeiro dia que eu saí de casa para ir para o mundo</li>
+                    <li class="card">
+                        <p class="card-status card-status__a-fazer"><i class="fa-regular fa-circle-dot"></i>A FAZER</p>
+                        <div class="card-infos">
+                            <p class="card-data">18/02/2026</p>
+                            <p class="card-prioridade card-prioridade__alta">Prioridade Alta</p>
+                        </div>
+                        <p class="card-responsavel"></p>
+                        <p class="card-titulo">Fazer o protótipo do projeto</p>
+                        <p class="card-descricao">Desenvolver o protótipo de baixa fidelidade do projeto Kanban</p>
+                    </li>
                 </ul>
             </div>
             <div id="coluna-2" class="colunas">
                 <h2 class="titulo-coluna">FAZENDO</h2>
-                <ul id="coluna-lista-2" class="coluna-lista"></ul>
+                <ul id="coluna-lista-2" class="coluna-lista">
+                    <li class="card">
+                        <p class="card-status card-status__fazendo"><i class="fa-regular fa-circle-dot"></i>FAZENDO</p>
+                        <div class="card-infos">
+                            <p class="card-data">18/02/2026</p>
+                            <p class="card-prioridade card-prioridade__media">Prioridade Média</p>
+                        </div>
+                        <p class="card-responsavel"></p>
+                        <p class="card-titulo">Fazer o protótipo do projeto</p>
+                        <p class="card-descricao">Desenvolver o protótipo de baixa fidelidade do projeto Kanban</p>
+                    </li>
+                </ul>
             </div>
             <div id="coluna-3" class="colunas">
                 <h2 class="titulo-coluna">FEITO</h2>
-                <ul id="coluna-lista-3" class="coluna-lista"></ul>
+                <ul id="coluna-lista-3" class="coluna-lista">
+                    <li class="card">
+                        <p class="card-status card-status__feito"><i class="fa-regular fa-circle-dot"></i>FEITO</p>
+                        <div class="card-infos">
+                            <p class="card-data">18/02/2026</p>
+                            <p class="card-prioridade card-prioridade__baixa">Prioridade Baixa</p>
+                        </div>
+                        <p class="card-responsavel"></p>
+                        <p class="card-titulo">Fazer o protótipo do projeto</p>
+                        <p class="card-descricao">Desenvolver o protótipo de baixa fidelidade do projeto Kanban</p>
+                    </li>
+                </ul>
             </div>
             <button type="button" id="btn-adicionar-card">+</button>
         </div>
     </main>
 
 </body>
+
 </html>

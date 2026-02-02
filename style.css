@@ -7,6 +7,9 @@
     --cor-primaria: #f4a261;
     --cor-secundaria: #e9c46a;
     --cor-terciaria: #2a9d8f;
+    --cor-prioridade-alta: #f94144;
+    --cor-prioridade-media: #f9c74f;
+    --cor-prioridade-baixa: #43aa8b;
     /* Fontes */
     --fonte-primaria: "Poppins", sans-serif;
 }
@@ -51,7 +54,7 @@ main {
 #main-container {
     display: flex;
     width: 80dvw;
-    min-height: 500px;
+    min-height: 600px;
     background-color: var(--cor-texto);
     color: var(--cor-fundo);
     border-radius: 16px;
@@ -65,7 +68,7 @@ main {
 .titulo-coluna {
     text-align: center;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 #coluna-1 {
@@ -112,5 +115,51 @@ main {
     background-color: var(--cor-texto);
     padding: 16px;
     border-radius: 8px;
-    line-height: 1.5rem;
+    font-weight: 600;
+    line-height: 1.7rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    cursor: grab;
+}
+
+.fa-circle-dot {
+    margin-left: -3px;
+    margin-right: 8px;
+}
+
+.card-status__a-fazer {
+    color: var(--cor-primaria);
+}
+
+.card-status__fazendo {
+    color: var(--cor-secundaria);
+}
+
+.card-status__feito {
+    color: var(--cor-terciaria);
+}
+
+.card-infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-prioridade__alta {
+    color: var(--cor-prioridade-alta);
+}
+
+.card-prioridade__media {
+    color: var(--cor-prioridade-media);
+}
+
+.card-prioridade__baixa {
+    color: var(--cor-prioridade-baixa);
+}
+
+.card-titulo {
+    font-size: 1.1rem;
+}
+
+.card-descricao {
+    font-weight: 500;
 }
