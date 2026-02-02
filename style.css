@@ -97,3 +97,20 @@ main {
     cursor: pointer;
     transition: .3s;
 }
+
+.coluna-lista {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+}
+
+.card {
+    width: 80%;
+    background-color: var(--cor-texto);
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.5rem;
+}
