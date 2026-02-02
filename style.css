@@ -163,3 +163,27 @@ main {
 .card-descricao {
     font-weight: 500;
 }
+
+.card-botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.botao-card {
+    width: 40px;
+    height: 30px;
+    background-color: transparent;
+    color: var(--cor-texto);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-editar {
+    background-color: var(--cor-prioridade-baixa);
+}
+
+.btn-excluir {
+    background-color: var(--cor-prioridade-alta);
+}
