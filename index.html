@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método Kanban</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
@@ -19,6 +21,22 @@
     </header>
 
     <main>
+        <form id="formulario-card" action="#">
+            <div id="container-formulario">
+                <fieldset id="campos-status">
+                    <label for="status">Status</label>
+                    <ul id="lista-status">
+                        <li class="status-item status-a-fazer status-selecionado">A FAZER</li>
+                        <li class="status-item status-fazendo">FAZENDO</li>
+                        <li class="status-item status-feito">FEITO</li>
+                    </ul>
+                </fieldset>
+                <fieldset id="campos-data"></fieldset>
+                <fieldset id="campos-prioridade"></fieldset>
+                <fieldset id="campos-titulo"></fieldset>
+                <fieldset id="campos-descricao"></fieldset>
+            </div>
+        </form>
         <div id="main-container">
             <div id="coluna-1" class="colunas">
                 <h2 class="titulo-coluna">A FAZER</h2>
@@ -30,7 +48,8 @@
                             <p class="card-prioridade card-prioridade__alta">Prioridade Alta</p>
                         </div>
                         <p class="card-titulo">Fazer o protótipo do projeto</p>
-                        <p class="card-descricao">Desenvolver o protótipo de baixa fidelidade do projeto Kanban conforme orientações de design.</p>
+                        <p class="card-descricao">Desenvolver o protótipo de baixa fidelidade do projeto Kanban conforme
+                            orientações de design.</p>
                         <div class="card-botoes">
                             <button class="botao-card btn-editar"><i class="fa-solid fa-pen"></i></button>
                             <button class="botao-card btn-excluir"><i class="fa-solid fa-trash"></i></button>

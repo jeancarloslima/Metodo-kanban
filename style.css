@@ -4,6 +4,7 @@
     /* Cores */
     --cor-texto: #F1FFE7;
     --cor-fundo: #264653;
+    --cor-fundo-suave: #26465365;
     --cor-primaria: #f4a261;
     --cor-secundaria: #e9c46a;
     --cor-terciaria: #2a9d8f;
@@ -40,7 +41,7 @@ header {
     color: var(--cor-secundaria);
 }
 
-#titulo-feito{
+#titulo-feito {
     color: var(--cor-terciaria);
 }
 
@@ -49,6 +50,87 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#formulario-card {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-fundo-suave);
+}
+
+#container-formulario {
+    width: 650px;
+    min-height: 500px;
+    border-radius: 16px;
+    background-color: var(--cor-texto);
+    padding: 2rem 1rem;
+    color: var(--cor-fundo);
+}
+
+#campos-status {
+    text-align: center;
+}
+
+#lista-status {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    margin-top: .7rem;
+}
+
+.status-item {
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid var(--cor-fundo);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.status-a-fazer {
+    color: var(--cor-primaria);
+    border-radius: 16px 0 0 16px;
+}
+
+.status-a-fazer:hover,
+.status-a-fazer.status-selecionado {
+    background-color: var(--cor-primaria);
+}
+
+.status-fazendo {
+    color: var(--cor-secundaria);
+}
+
+.status-fazendo:hover,
+.status-fazendo.status-selecionado {
+    background-color: var(--cor-secundaria);
+}
+
+.status-feito {
+    color: var(--cor-terciaria);
+    border-radius: 0 16px 16px 0;
+}
+
+.status-feito:hover,
+.status-feito.status-selecionado {
+    background-color: var(--cor-terciaria);
+}
+
+.status-a-fazer:hover,
+.status-fazendo:hover,
+.status-feito:hover {
+    color: var(--cor-texto);
+}
+
+.status-selecionado {
+    cursor: auto;
+    color: var(--cor-texto);
+    font-weight: 600;
 }
 
 #main-container {
