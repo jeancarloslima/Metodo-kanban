@@ -56,13 +56,16 @@ main {
     width: 100dvw;
     height: 100dvh;
     position: absolute;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--cor-fundo-suave);
 }
 
 #container-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 650px;
     min-height: 500px;
     border-radius: 16px;
@@ -128,6 +131,68 @@ main {
 }
 
 .status-selecionado {
+    cursor: auto;
+    color: var(--cor-texto);
+    font-weight: 600;
+}
+
+#campos-prioridade {
+    text-align: center;
+}
+
+#lista-prioridade {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    margin-top: .7rem;
+}
+
+.prioridade-item {
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid var(--cor-fundo);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.prioridade-baixa {
+    color: var(--cor-prioridade-baixa);
+    border-radius: 16px 0 0 16px;
+}
+
+.prioridade-baixa:hover,
+.prioridade-baixa.prioridade-selecionado {
+    background-color: var(--cor-prioridade-baixa);
+}
+
+.prioridade-media {
+    color: var(--cor-prioridade-media);
+}
+
+.prioridade-media:hover,
+.prioridade-media.prioridade-selecionado {
+    background-color: var(--cor-prioridade-media);
+}
+
+.prioridade-alta {
+    color: var(--cor-prioridade-alta);
+    border-radius: 0 16px 16px 0;
+}
+
+.prioridade-alta:hover,
+.prioridade-alta.prioridade-selecionado {
+    background-color: var(--cor-prioridade-alta);
+}
+
+.prioridade-baixa:hover,
+.prioridade-media:hover,
+.prioridade-alta:hover {
+    color: var(--cor-texto);
+}
+
+.prioridade-selecionado {
     cursor: auto;
     color: var(--cor-texto);
     font-weight: 600;
