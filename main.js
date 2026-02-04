@@ -1,5 +1,6 @@
 const containerFormularioCard = document.querySelector("#formulario-card");
 const itensStatus = document.querySelectorAll(".status-item");
+const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnExcluir = document.querySelectorAll(".btn-excluir");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 
@@ -11,6 +12,18 @@ itensStatus.forEach((elemento) => {
             })
 
             elemento.classList.add('status-selecionado');
+        };
+    });
+});
+
+itensPriodidade.forEach((elemento) => {
+    elemento.addEventListener('click', () => {
+        if (!elemento.classList[2]) {
+            itensPriodidade.forEach((item) => {
+                item.classList.remove('prioridade-selecionado');
+            })
+
+            elemento.classList.add('prioridade-selecionado');
         };
     });
 });

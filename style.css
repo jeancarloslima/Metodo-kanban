@@ -74,7 +74,11 @@ main {
     color: var(--cor-fundo);
 }
 
-#campos-status {
+#campos-status,
+#campos-data,
+#campos-prioridade,
+#campos-titulo,
+#campos-descricao {
     text-align: center;
 }
 
@@ -134,10 +138,6 @@ main {
     cursor: auto;
     color: var(--cor-texto);
     font-weight: 600;
-}
-
-#campos-prioridade {
-    text-align: center;
 }
 
 #lista-prioridade {
