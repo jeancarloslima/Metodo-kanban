@@ -15,8 +15,11 @@
     --fonte-primaria: "Poppins", sans-serif;
 }
 
-body {
+* {
     box-sizing: border-box;
+}
+
+body {
     font-size: 16px;
     font-family: var(--fonte-primaria);
     background-color: var(--cor-fundo);
@@ -138,6 +141,19 @@ main {
     cursor: auto;
     color: var(--cor-texto);
     font-weight: 600;
+}
+
+#data {
+    display: block;
+    margin: .7rem auto 0 auto;
+    width: 200px;
+    height: 30px;
+    padding: 8px;
+    background-color: transparent;
+    color: var(--cor-fundo);
+    border: 1px solid var(--cor-fundo);
+    border-radius: 16px;
+    cursor: pointer;
 }
 
 #lista-prioridade {
