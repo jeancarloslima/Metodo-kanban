@@ -59,7 +59,7 @@ main {
     width: 100dvw;
     height: 100dvh;
     position: absolute;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--cor-fundo-suave);
@@ -242,6 +242,24 @@ main {
     border: 1px solid var(--cor-fundo);
     border-radius: 16px;
     cursor: pointer;
+}
+
+#btn-salvar-formulario {
+    width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-fundo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: auto;
+    cursor: pointer;
+    transition: .4s ease-in-out;
+}
+
+#btn-salvar-formulario:hover {
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+    border-radius: 16px;
 }
 
 #main-container {
