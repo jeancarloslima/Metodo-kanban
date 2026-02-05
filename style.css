@@ -70,7 +70,7 @@ main {
     flex-direction: column;
     gap: 1.5rem;
     width: 650px;
-    min-height: 500px;
+    min-height: 600px;
     border-radius: 16px;
     background-color: var(--cor-texto);
     padding: 2rem 1rem;
@@ -229,6 +229,21 @@ main {
     cursor: pointer;
 }
 
+#campo-descricao {
+    display: block;
+    resize: none;
+    margin: .7rem auto 0 auto;
+    width: 400px;
+    height: 110px;
+    padding: 16px;
+    font-family: var(--fonte-primaria);
+    background-color: transparent;
+    color: var(--cor-fundo);
+    border: 1px solid var(--cor-fundo);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
 #main-container {
     display: flex;
     width: 80dvw;
@@ -250,6 +265,7 @@ main {
 }
 
 #coluna-1 {
+    width: 34%;
     background-color: var(--cor-primaria);
     border-radius: 16px 0 0 16px;
 }

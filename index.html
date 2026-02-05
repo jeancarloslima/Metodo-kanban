@@ -45,9 +45,13 @@
                 </fieldset>
                 <fieldset id="campos-titulo">
                     <label for="campo-titulo">Título</label>
-                    <input type="text" name="campo-titulo" id="campo-titulo" maxlength="40">
+                    <input type="text" name="campo-titulo" id="campo-titulo" maxlength="50" required>
                 </fieldset>
-                <fieldset id="campos-descricao"></fieldset>
+                <fieldset id="campos-descricao">
+                    <label for="campo-descricao">Descrição</label>
+                    <textarea name="campo-descricao" id="campo-descricao" maxlength="130" required></textarea>
+                </fieldset>
+                <input type="submit" id="btn-salvar-formulario" value="SALVAR">
             </div>
         </form>
         <div id="main-container">
