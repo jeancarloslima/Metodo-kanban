@@ -1,8 +1,18 @@
+const campoData = document.querySelector("#data");
 const containerFormularioCard = document.querySelector("#formulario-card");
 const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnExcluir = document.querySelectorAll(".btn-excluir");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
+
+// Define o valor mínimo da data como hoje
+const hoje = new Date();
+const ano = hoje.getFullYear();
+const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+const dia = String(hoje.getDate()).padStart(2, '0');
+const dataFormatada = `${ano}-${mes}-${dia}`;
+campoData.min = dataFormatada;
+campoData.value = dataFormatada;
 
 itensStatus.forEach((elemento) => {
     elemento.addEventListener('click', () => {
