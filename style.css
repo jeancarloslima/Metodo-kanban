@@ -219,7 +219,8 @@ main {
     display: block;
     margin: .7rem auto 0 auto;
     width: 400px;
-    height: 30px;
+    height: 40px;
+    font-size: 1.1rem;
     padding: 16px;
     font-family: var(--fonte-primaria);
     background-color: transparent;

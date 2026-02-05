@@ -54,7 +54,27 @@ btnAdicionarCard.addEventListener('click', (evento) => {
 
 window.addEventListener("click", (evento) => {
     if (!containerFormularioCard.contains(evento.target)) {
+        formularioCard.reset();
+        campoData.value = dataFormatada;
+
         formularioCard.style.display = 'none';
         btnAdicionarCard.style.display = 'block';
     };
+});
+
+formularioCard.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const dados = new FormData(e.target);
+    const status = document.querySelector(".status-selecionado").innerHTML;
+    const data = dados.get('data');
+    const prioridade = document.querySelector(".prioridade-selecionado").innerHTML;
+    const titulo = dados.get('campo-titulo');
+    const descricao = dados.get('campo-descricao');
+
+    console.log(data);
+    console.log(status);
+    console.log(titulo);
+    console.log(prioridade);
+    console.log(descricao);
 });
