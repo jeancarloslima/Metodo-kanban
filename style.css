@@ -59,7 +59,7 @@ main {
     width: 100dvw;
     height: 100dvh;
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: var(--cor-fundo-suave);

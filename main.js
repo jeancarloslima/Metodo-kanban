@@ -1,5 +1,6 @@
 const campoData = document.querySelector("#data");
-const containerFormularioCard = document.querySelector("#formulario-card");
+const formularioCard = document.querySelector("#formulario-card");
+const containerFormularioCard = document.querySelector("#container-formulario");
 const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnExcluir = document.querySelectorAll(".btn-excluir");
@@ -44,7 +45,16 @@ btnExcluir.forEach((elemento) => {
     });
 });
 
-btnAdicionarCard.addEventListener('click', () => {
-    containerFormularioCard.style.display = 'flex';
+btnAdicionarCard.addEventListener('click', (evento) => {
+    formularioCard.style.display = 'flex';
     btnAdicionarCard.style.display = 'none';
-})
+
+    evento.stopPropagation();
+});
+
+window.addEventListener("click", (evento) => {
+    if (!containerFormularioCard.contains(evento.target)) {
+        formularioCard.style.display = 'none';
+        btnAdicionarCard.style.display = 'block';
+    };
+});
