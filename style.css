@@ -266,7 +266,7 @@ main {
 #main-container {
     display: flex;
     width: 80dvw;
-    min-height: 600px;
+    height: 600px;
     background-color: var(--cor-texto);
     color: var(--cor-fundo);
     border-radius: 16px;
@@ -316,7 +316,7 @@ main {
 
 .coluna-lista {
     height: 100%;
-    max-height: 536px;
+    max-height: 490px;
     display: flex;
     flex-direction: column;
     align-items: center;

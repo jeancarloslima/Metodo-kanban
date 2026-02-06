@@ -137,6 +137,18 @@ formularioCard.addEventListener("submit", (e) => {
 
     elementoColuna.appendChild(card);
 
+    elementoBtnEditar.addEventListener('click', (evento) => {
+        formularioCard.style.display = 'flex';
+        btnAdicionarCard.style.display = 'none';
+
+        const campoStatus = document.querySelector(`.status-${statusSelecionado}`).click();
+        const campoData = document.querySelector("#data").value = data;
+        const campoTitulo = document.querySelector("#campo-titulo").value = titulo;
+        const campoDescricao = document.querySelector("#campo-descricao").value = descricao;
+
+        evento.stopPropagation();
+    });
+
     elementoBtnExcluir.addEventListener('click', () => {
         elementoBtnExcluir.parentElement.parentElement.remove();
     });
