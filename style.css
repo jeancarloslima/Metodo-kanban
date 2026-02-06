@@ -316,11 +316,19 @@ main {
 
 .coluna-lista {
     height: 100%;
+    max-height: 536px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    padding: 24px 16px;
+    margin-top: 12px;
+    padding: 12px 16px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.coluna-lista::-webkit-scrollbar {
+    display: none;
 }
 
 .card {

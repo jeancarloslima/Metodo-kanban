@@ -58,7 +58,7 @@ window.addEventListener("click", (evento) => {
 
 formularioCard.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     const dados = new FormData(e.target);
     const status = document.querySelector(".status-selecionado").innerHTML;
     const data = dados.get('data');
@@ -76,7 +76,7 @@ formularioCard.addEventListener("submit", (e) => {
         colunaAlvo = "coluna-lista-3";
         statusSelecionado = "feito";
     };
-    
+
     const elementoColuna = document.querySelector(`#${colunaAlvo}`);
 
     const card = document.createElement("li");
@@ -96,7 +96,7 @@ formularioCard.addEventListener("submit", (e) => {
 
     const paragrafoData = document.createElement("p");
     paragrafoData.classList.add("card-data");
-    paragrafoData.innerText = data;
+    paragrafoData.innerText = `${data[8]}${data[9]}/${data[5]}${data[6]}/${data[0]}${data[1]}${data[2]}${data[3]}`;
 
     const paragrafoPrioridade = document.createElement("p");
     paragrafoPrioridade.classList.add("card-prioridade", `card-prioridade__${prioridade.toLowerCase()}`);
@@ -140,4 +140,9 @@ formularioCard.addEventListener("submit", (e) => {
     elementoBtnExcluir.addEventListener('click', () => {
         elementoBtnExcluir.parentElement.parentElement.remove();
     });
+
+    formularioCard.reset();
+    document.querySelector(".status-a-fazer").click();
+    campoData.value = dataFormatada;
+    document.querySelector(".prioridade-baixa").click();
 });
