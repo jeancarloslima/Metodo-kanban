@@ -3,10 +3,8 @@ const formularioCard = document.querySelector("#formulario-card");
 const containerFormularioCard = document.querySelector("#container-formulario");
 const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
-const btnExcluir = document.querySelectorAll(".btn-excluir");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 
-// Define o valor mínimo da data como hoje
 const hoje = new Date();
 const ano = hoje.getFullYear();
 const mes = String(hoje.getMonth() + 1).padStart(2, '0');
@@ -36,12 +34,6 @@ itensPriodidade.forEach((elemento) => {
 
             elemento.classList.add('prioridade-selecionado');
         };
-    });
-});
-
-btnExcluir.forEach((elemento) => {
-    elemento.addEventListener('click', () => {
-        elemento.parentElement.parentElement.remove();
     });
 });
 
@@ -97,7 +89,7 @@ formularioCard.addEventListener("submit", (e) => {
     iconeStatus.classList.add("fa-regular", "fa-circle-dot");
 
     paragrafoStatus.append(iconeStatus);
-    paragrafoStatus.innerText += status;
+    paragrafoStatus.innerHTML += status;
 
     const cardInfos = document.createElement("li");
     cardInfos.classList.add("card-infos");
@@ -144,4 +136,8 @@ formularioCard.addEventListener("submit", (e) => {
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
+
+    elementoBtnExcluir.addEventListener('click', () => {
+        elementoBtnExcluir.parentElement.parentElement.remove();
+    });
 });
