@@ -5,6 +5,8 @@ const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 
+let id = 0;
+
 const hoje = new Date();
 const ano = hoje.getFullYear();
 const mes = String(hoje.getMonth() + 1).padStart(2, '0');
@@ -58,7 +60,12 @@ window.addEventListener("click", (evento) => {
 
 formularioCard.addEventListener("submit", (e) => {
     e.preventDefault();
+    criarCard(e);
+});
 
+function criarCard(e, editando) {
+    console.log(editando);
+    
     const dados = new FormData(e.target);
     const status = document.querySelector(".status-selecionado").innerHTML;
     const data = dados.get('data');
@@ -133,21 +140,13 @@ formularioCard.addEventListener("submit", (e) => {
 
     containerBotoes.append(elementoBtnEditar, elementoBtnExcluir);
 
+    card.id = id;
+    id++;
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
 
-    elementoBtnEditar.addEventListener('click', (evento) => {
-        formularioCard.style.display = 'flex';
-        btnAdicionarCard.style.display = 'none';
-
-        const campoStatus = document.querySelector(`.status-${statusSelecionado}`).click();
-        const campoData = document.querySelector("#data").value = data;
-        const campoTitulo = document.querySelector("#campo-titulo").value = titulo;
-        const campoDescricao = document.querySelector("#campo-descricao").value = descricao;
-
-        evento.stopPropagation();
-    });
+    elementoBtnEditar.addEventListener('click', editarCard);
 
     elementoBtnExcluir.addEventListener('click', () => {
         elementoBtnExcluir.parentElement.parentElement.remove();
@@ -157,4 +156,19 @@ formularioCard.addEventListener("submit", (e) => {
     document.querySelector(".status-a-fazer").click();
     campoData.value = dataFormatada;
     document.querySelector(".prioridade-baixa").click();
-});
+}
+
+function editarCard() {
+    formularioCard.style.display = 'flex';
+    btnAdicionarCard.style.display = 'none';
+
+    const campoStatus = document.querySelector(`.status-${statusSelecionado}`).click();
+    const campoData = document.querySelector("#data").value = data;
+    const campoPrioridade = document.querySelector(`.prioridade-${prioridade.toLowerCase()}`).click();
+    const campoTitulo = document.querySelector("#campo-titulo").value = titulo;
+    const campoDescricao = document.querySelector("#campo-descricao").value = descricao;
+
+    criarCard(true);
+
+    evento.stopPropagation();
+}
