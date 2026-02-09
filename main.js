@@ -144,7 +144,10 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     if (idSelecionado > 0) {
         const cardEditando = document.querySelector(`#card-${idSelecionado}.card`).remove();
-        cardId.id = 0;
+        cardId.id = "card-0";
+        
+        formularioCard.style.display = 'none';
+        btnAdicionarCard.style.display = 'block';
     }
 
     card.id = `card-${id}`;
