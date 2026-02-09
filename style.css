@@ -99,7 +99,6 @@ main {
     line-height: 30px;
     border: 1px solid var(--cor-fundo);
     cursor: pointer;
-    transition: .3s ease-in-out;
 }
 
 .status-a-fazer {
@@ -140,7 +139,6 @@ main {
 .status-selecionado {
     cursor: auto;
     color: var(--cor-texto);
-    font-weight: 600;
 }
 
 #data {
@@ -171,7 +169,6 @@ main {
     line-height: 30px;
     border: 1px solid var(--cor-fundo);
     cursor: pointer;
-    transition: .3s ease-in-out;
 }
 
 .prioridade-baixa {
@@ -212,7 +209,6 @@ main {
 .prioridade-selecionado {
     cursor: auto;
     color: var(--cor-texto);
-    font-weight: 600;
 }
 
 #campo-titulo {

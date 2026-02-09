@@ -60,12 +60,7 @@ window.addEventListener("click", (evento) => {
 
 formularioCard.addEventListener("submit", (e) => {
     e.preventDefault();
-    criarCard(e);
-});
 
-function criarCard(e, editando) {
-    console.log(editando);
-    
     const dados = new FormData(e.target);
     const status = document.querySelector(".status-selecionado").innerHTML;
     const data = dados.get('data');
@@ -73,6 +68,10 @@ function criarCard(e, editando) {
     const titulo = dados.get('campo-titulo');
     const descricao = dados.get('campo-descricao');
 
+    criarCard(status, data, prioridade, titulo, descricao);
+});
+
+function criarCard(status, data, prioridade, titulo, descricao) {
     let colunaAlvo = "coluna-lista-1";
     let statusSelecionado = "a-fazer";
 
@@ -146,29 +145,45 @@ function criarCard(e, editando) {
 
     elementoColuna.appendChild(card);
 
-    elementoBtnEditar.addEventListener('click', editarCard);
+    elementoBtnEditar.addEventListener('click', (e) => {
+        editarCard(e, elementoBtnEditar);
+    });
 
     elementoBtnExcluir.addEventListener('click', () => {
         elementoBtnExcluir.parentElement.parentElement.remove();
     });
 
     formularioCard.reset();
-    document.querySelector(".status-a-fazer").click();
-    campoData.value = dataFormatada;
-    document.querySelector(".prioridade-baixa").click();
+    campoData.value = data;
 }
 
-function editarCard() {
+function editarCard(e, botao) {
     formularioCard.style.display = 'flex';
     btnAdicionarCard.style.display = 'none';
 
+    const card = botao.parentElement.parentElement;
+    const status = card.querySelector(".card-status").innerText;
+    let statusSelecionado = "a-fazer";
+
+    if (status === "FAZENDO") {
+        colunaAlvo = "coluna-lista-2";
+        statusSelecionado = "fazendo";
+    } else if (status === "FEITO") {
+        colunaAlvo = "coluna-lista-3";
+        statusSelecionado = "feito";
+    };
+
+    const data = card.querySelector(".card-data").innerText;
+    const dataFormatada = `${data[6]}${data[7]}${data[8]}${data[9]}-${data[3]}${data[4]}-${data[0]}${data[1]}`;
+    const prioridade = card.querySelector(".card-prioridade").innerText.split(' ')[1].toUpperCase();
+    const titulo = card.querySelector(".card-titulo").innerText;
+    const descricao = card.querySelector(".card-descricao").innerText;
+
     const campoStatus = document.querySelector(`.status-${statusSelecionado}`).click();
-    const campoData = document.querySelector("#data").value = data;
+    const CampoData = document.querySelector("#data").value = dataFormatada;
     const campoPrioridade = document.querySelector(`.prioridade-${prioridade.toLowerCase()}`).click();
-    const campoTitulo = document.querySelector("#campo-titulo").value = titulo;
-    const campoDescricao = document.querySelector("#campo-descricao").value = descricao;
+    const CampoTitulo = document.querySelector("#campo-titulo").value = titulo;
+    const CampoDescricao = document.querySelector("#campo-descricao").value = descricao;
 
-    criarCard(true);
-
-    evento.stopPropagation();
+    e.stopPropagation();
 }
