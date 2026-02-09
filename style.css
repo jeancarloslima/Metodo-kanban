@@ -77,6 +77,10 @@ main {
     color: var(--cor-fundo);
 }
 
+.card-id {
+    display: none;
+}
+
 #campos-status,
 #campos-data,
 #campos-prioridade,

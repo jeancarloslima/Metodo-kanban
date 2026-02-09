@@ -5,7 +5,7 @@ const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 
-let id = 0;
+let id = 1;
 
 const hoje = new Date();
 const ano = hoje.getFullYear();
@@ -139,7 +139,15 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     containerBotoes.append(elementoBtnEditar, elementoBtnExcluir);
 
-    card.id = id;
+    const cardId = document.querySelector(".card-id-atual");
+    const idSelecionado = cardId.id.split("-")[1];
+
+    if (idSelecionado > 0) {
+        const cardEditando = document.querySelector(`#card-${idSelecionado}.card`).remove();
+        cardId.id = 0;
+    }
+
+    card.id = `card-${id}`;
     id++;
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
@@ -162,6 +170,7 @@ function editarCard(e, botao) {
     btnAdicionarCard.style.display = 'none';
 
     const card = botao.parentElement.parentElement;
+    const cardId = document.querySelector(".card-id-atual").id = card.id;
     const status = card.querySelector(".card-status").innerText;
     let statusSelecionado = "a-fazer";
 
