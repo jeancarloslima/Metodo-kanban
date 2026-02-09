@@ -144,14 +144,16 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     if (idSelecionado > 0) {
         const cardEditando = document.querySelector(`#card-${idSelecionado}.card`).remove();
+        card.id = `card-${idSelecionado}`;
         cardId.id = "card-0";
         
         formularioCard.style.display = 'none';
         btnAdicionarCard.style.display = 'block';
+    } else {
+        card.id = `card-${id}`;
+        id++;
     }
-
-    card.id = `card-${id}`;
-    id++;
+    
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
