@@ -6,6 +6,8 @@ const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 const colunas = document.querySelectorAll(".coluna-lista");
 
+let cardsSalvos = localStorage.getItem("cardsSalvos") || [];
+
 let id = 1;
 
 const hoje = new Date();
@@ -218,6 +220,9 @@ function criarCard(status, data, prioridade, titulo, descricao) {
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
+
+    cardsSalvos.push([card.id, status, data, prioridade, titulo, descricao]);
+    localStorage.setItem("cardsSalvos", cardsSalvos);
 
     elementoBtnEditar.addEventListener('click', (e) => {
         editarCard(e, elementoBtnEditar);
