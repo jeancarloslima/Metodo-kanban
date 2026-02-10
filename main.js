@@ -28,11 +28,33 @@ colunas.forEach((item) => {
     item.addEventListener("dragover", (e) => {
         const dragging = document.querySelector(".dragging");
         const applyAfter = pegaNovaPosicao(item, e.clientY);
+        const status = dragging.querySelector(".card-status");
 
         if (applyAfter) {
             applyAfter.insertAdjacentElement("afterend", dragging);
         } else {
             item.prepend(dragging);
+        }
+
+        switch (item.id) {
+            case "coluna-lista-1":
+                status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>A FAZER';
+                status.classList.remove("card-status__fazendo");
+                status.classList.remove("card-status__feito");
+                status.classList.add("card-status__a-fazer");
+                break;
+            case "coluna-lista-2":
+                status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>FAZENDO';
+                status.classList.remove("card-status__a-fazer");
+                status.classList.remove("card-status__feito");
+                status.classList.add("card-status__fazendo");
+                break;
+            case "coluna-lista-3":
+                status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>FEITO';
+                status.classList.remove("card-status__a-fazer");
+                status.classList.remove("card-status__fazendo");
+                status.classList.add("card-status__feito");
+                break;
         }
     });
 });
