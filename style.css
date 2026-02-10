@@ -55,6 +55,10 @@ main {
     align-items: center;
 }
 
+.dragging {
+    opacity: .5;
+}
+
 #formulario-card {
     width: 100dvw;
     height: 100dvh;

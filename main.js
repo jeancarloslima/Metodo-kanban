@@ -4,6 +4,7 @@ const containerFormularioCard = document.querySelector("#container-formulario");
 const itensStatus = document.querySelectorAll(".status-item");
 const itensPriodidade = document.querySelectorAll(".prioridade-item");
 const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
+const colunas = document.querySelectorAll(".coluna-lista");
 
 let id = 1;
 
@@ -14,6 +15,43 @@ const dia = String(hoje.getDate()).padStart(2, '0');
 const dataFormatada = `${ano}-${mes}-${dia}`;
 campoData.min = dataFormatada;
 campoData.value = dataFormatada;
+
+document.addEventListener("dragstart", (e) => {
+    e.target.classList.add("dragging");
+});
+
+document.addEventListener("dragend", (e) => {
+    e.target.classList.remove("dragging");
+});
+
+colunas.forEach((item) => {
+    item.addEventListener("dragover", (e) => {
+        const dragging = document.querySelector(".dragging");
+        const applyAfter = pegaNovaPosicao(item, e.clientY);
+
+        if (applyAfter) {
+            applyAfter.insertAdjacentElement("afterend", dragging);
+        } else {
+            item.prepend(dragging);
+        }
+    });
+});
+
+function pegaNovaPosicao(column, posY) {
+    const cards = column.querySelectorAll(".item:not(.dragging)");
+    let resultado;
+
+    for (let card_selecionado of cards) {
+        const box = card_selecionado.getBoundingClientRect();
+        const boxCenterY = box.y + box.height / 2;
+
+        if (posY >= boxCenterY) {
+            resultado = card_selecionado;
+        }
+    }
+
+    return resultado;
+};
 
 itensStatus.forEach((elemento) => {
     elemento.addEventListener('click', () => {
@@ -87,6 +125,7 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     const card = document.createElement("li");
     card.classList.add("card");
+    card.draggable = "true";
 
     const paragrafoStatus = document.createElement("p");
     paragrafoStatus.classList.add("card-status", `card-status__${statusSelecionado}`);
@@ -146,14 +185,14 @@ function criarCard(status, data, prioridade, titulo, descricao) {
         const cardEditando = document.querySelector(`#card-${idSelecionado}.card`).remove();
         card.id = `card-${idSelecionado}`;
         cardId.id = "card-0";
-        
+
         formularioCard.style.display = 'none';
         btnAdicionarCard.style.display = 'block';
     } else {
         card.id = `card-${id}`;
         id++;
     }
-    
+
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
