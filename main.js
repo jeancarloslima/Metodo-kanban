@@ -7,6 +7,8 @@ const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 const colunas = document.querySelectorAll(".coluna-lista");
 
 let cardsSalvos = localStorage.getItem("cardsSalvos") || [];
+console.log(cardsSalvos);
+
 
 let id = 1;
 
@@ -206,7 +208,7 @@ function criarCard(status, data, prioridade, titulo, descricao) {
     const idSelecionado = cardId.id.split("-")[1];
 
     if (idSelecionado > 0) {
-        const cardEditando = document.querySelector(`#card-${idSelecionado}.card`).remove();
+        document.querySelector(`#card-${idSelecionado}.card`).remove();
         card.id = `card-${idSelecionado}`;
         cardId.id = "card-0";
 
@@ -221,7 +223,9 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     elementoColuna.appendChild(card);
 
-    cardsSalvos.push([card.id, status, data, prioridade, titulo, descricao]);
+    const infosCard = `${status}-${data}-${prioridade}-${titulo}-${descricao}`;
+    cardsSalvos.push(infosCard);
+
     localStorage.setItem("cardsSalvos", cardsSalvos);
 
     elementoBtnEditar.addEventListener('click', (e) => {
@@ -234,6 +238,18 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
     formularioCard.reset();
     campoData.value = data;
+}
+
+function adicionaCardsSalvos() {
+    let cards = localStorage.getItem("cardsSalvos");
+
+    console.log(cards);
+    
+    
+}
+
+if (localStorage.getItem("cardsSalvos")) {
+    adicionaCardsSalvos();
 }
 
 function editarCard(e, botao) {
