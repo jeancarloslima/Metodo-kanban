@@ -7,9 +7,6 @@ const btnAdicionarCard = document.querySelector("#btn-adicionar-card");
 const colunas = document.querySelectorAll(".coluna-lista");
 
 let cardsSalvos = localStorage.getItem("cardsSalvos") || [];
-console.log(cardsSalvos);
-
-
 let id = 1;
 
 const hoje = new Date();
@@ -240,16 +237,13 @@ function criarCard(status, data, prioridade, titulo, descricao) {
     campoData.value = data;
 }
 
-function adicionaCardsSalvos() {
-    let cards = localStorage.getItem("cardsSalvos");
-
-    console.log(cards);
+if (cardsSalvos.length > 0) {
+    cardsSalvos = cardsSalvos.split(",");
     
-    
-}
-
-if (localStorage.getItem("cardsSalvos")) {
-    adicionaCardsSalvos();
+    cardsSalvos.forEach((card) => {
+        const valoresCard = card.split("-");
+        criarCard(valoresCard[0], `${valoresCard[1]}-${valoresCard[2]}-${valoresCard[3]}`, valoresCard[4], valoresCard[5], valoresCard[6]);
+    });
 }
 
 function editarCard(e, botao) {
