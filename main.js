@@ -206,7 +206,7 @@ function criarCard(status, data, prioridade, titulo, descricao, idItem) {
 
     if (idItem) {
         card.id = `card-${idItem}`;
-        id++;
+        id = Number(idItem) + 1;
     } else {
         if (idSelecionado > 0) {
             document.querySelector(`#card-${idSelecionado}.card`).remove();
@@ -236,7 +236,13 @@ function criarCard(status, data, prioridade, titulo, descricao, idItem) {
     });
 
     elementoBtnExcluir.addEventListener('click', () => {
-        elementoBtnExcluir.parentElement.parentElement.remove();
+        const cardPai = elementoBtnExcluir.parentElement.parentElement
+        const cardAExcluir = cardsSalvos.findIndex(card => card.includes(cardPai.id));
+        
+        cardsSalvos.splice(cardAExcluir, 1);
+        localStorage.setItem("cardsSalvos", cardsSalvos);
+
+        cardPai.remove();
     });
 
     formularioCard.reset();
