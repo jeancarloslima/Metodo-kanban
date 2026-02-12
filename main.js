@@ -37,26 +37,41 @@ colunas.forEach((item) => {
             item.prepend(dragging);
         }
 
+        const cardPai = status.parentElement;
+        const cardAExcluir = cardsSalvos.findIndex(card => card.includes(cardPai.id));
+        let novoArray;
+        
         switch (item.id) {
             case "coluna-lista-1":
                 status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>A FAZER';
                 status.classList.remove("card-status__fazendo");
                 status.classList.remove("card-status__feito");
                 status.classList.add("card-status__a-fazer");
+                novoArray = cardsSalvos[cardAExcluir].split("-");
+                novoArray[2] = "A FAZER";
+                cardsSalvos[cardAExcluir] = novoArray.join("-");
                 break;
             case "coluna-lista-2":
                 status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>FAZENDO';
                 status.classList.remove("card-status__a-fazer");
                 status.classList.remove("card-status__feito");
                 status.classList.add("card-status__fazendo");
+                novoArray = cardsSalvos[cardAExcluir].split("-");
+                novoArray[2] = "FAZENDO";
+                cardsSalvos[cardAExcluir] = novoArray.join("-");
                 break;
             case "coluna-lista-3":
                 status.innerHTML = '<i class="fa-regular fa-circle-dot "></i>FEITO';
                 status.classList.remove("card-status__a-fazer");
                 status.classList.remove("card-status__fazendo");
                 status.classList.add("card-status__feito");
+                novoArray = cardsSalvos[cardAExcluir].split("-");
+                novoArray[2] = "FEITO";
+                cardsSalvos[cardAExcluir] = novoArray.join("-");
                 break;
         }
+
+        localStorage.setItem("cardsSalvos", cardsSalvos);
     });
 });
 
@@ -209,7 +224,13 @@ function criarCard(status, data, prioridade, titulo, descricao, idItem) {
         id = Number(idItem) + 1;
     } else {
         if (idSelecionado > 0) {
-            document.querySelector(`#card-${idSelecionado}.card`).remove();
+            const cardPai = document.querySelector(`#card-${idSelecionado}.card`);
+            const cardAExcluir = cardsSalvos.findIndex(card => card.includes(cardPai.id));
+            cardsSalvos.splice(cardAExcluir, 1);
+            localStorage.setItem("cardsSalvos", cardsSalvos);
+
+            cardPai.remove();
+
             card.id = `card-${idSelecionado}`;
             cardId.id = "card-0";
 
@@ -238,7 +259,7 @@ function criarCard(status, data, prioridade, titulo, descricao, idItem) {
     elementoBtnExcluir.addEventListener('click', () => {
         const cardPai = elementoBtnExcluir.parentElement.parentElement
         const cardAExcluir = cardsSalvos.findIndex(card => card.includes(cardPai.id));
-        
+
         cardsSalvos.splice(cardAExcluir, 1);
         localStorage.setItem("cardsSalvos", cardsSalvos);
 
