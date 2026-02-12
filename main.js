@@ -132,7 +132,7 @@ formularioCard.addEventListener("submit", (e) => {
     criarCard(status, data, prioridade, titulo, descricao);
 });
 
-function criarCard(status, data, prioridade, titulo, descricao) {
+function criarCard(status, data, prioridade, titulo, descricao, idItem) {
     let colunaAlvo = "coluna-lista-1";
     let statusSelecionado = "a-fazer";
 
@@ -204,26 +204,32 @@ function criarCard(status, data, prioridade, titulo, descricao) {
     const cardId = document.querySelector(".card-id-atual");
     const idSelecionado = cardId.id.split("-")[1];
 
-    if (idSelecionado > 0) {
-        document.querySelector(`#card-${idSelecionado}.card`).remove();
-        card.id = `card-${idSelecionado}`;
-        cardId.id = "card-0";
-
-        formularioCard.style.display = 'none';
-        btnAdicionarCard.style.display = 'block';
-    } else {
-        card.id = `card-${id}`;
+    if (idItem) {
+        card.id = `card-${idItem}`;
         id++;
+    } else {
+        if (idSelecionado > 0) {
+            document.querySelector(`#card-${idSelecionado}.card`).remove();
+            card.id = `card-${idSelecionado}`;
+            cardId.id = "card-0";
+
+            formularioCard.style.display = 'none';
+            btnAdicionarCard.style.display = 'block';
+        } else {
+            card.id = `card-${id}`;
+            id++;
+        }
     }
 
     card.append(paragrafoStatus, cardInfos, paragrafoTitulo, paragrafoDescricao, containerBotoes);
 
     elementoColuna.appendChild(card);
 
-    const infosCard = `${status}-${data}-${prioridade}-${titulo}-${descricao}`;
-    cardsSalvos.push(infosCard);
-
-    localStorage.setItem("cardsSalvos", cardsSalvos);
+    if (!idItem) {
+        const infosCard = `${card.id}-${status}-${data}-${prioridade}-${titulo}-${descricao}`;
+        cardsSalvos.push(infosCard);
+        localStorage.setItem("cardsSalvos", cardsSalvos);
+    }
 
     elementoBtnEditar.addEventListener('click', (e) => {
         editarCard(e, elementoBtnEditar);
@@ -239,10 +245,10 @@ function criarCard(status, data, prioridade, titulo, descricao) {
 
 if (cardsSalvos.length > 0) {
     cardsSalvos = cardsSalvos.split(",");
-    
+
     cardsSalvos.forEach((card) => {
         const valoresCard = card.split("-");
-        criarCard(valoresCard[0], `${valoresCard[1]}-${valoresCard[2]}-${valoresCard[3]}`, valoresCard[4], valoresCard[5], valoresCard[6]);
+        criarCard(valoresCard[2], `${valoresCard[3]}-${valoresCard[4]}-${valoresCard[5]}`, valoresCard[6], valoresCard[7], valoresCard[8], valoresCard[1]);
     });
 }
 
